@@ -1,0 +1,1197 @@
+<title>Roussel Mbodo — IT Audit Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+/* === DESIGN SYSTEM ===
+   Layout: Full-width hero → scrolling project cards → summary bar
+   Palette: Deep slate + clinical teal + critical amber/red semantic layer
+   Type: DM Serif Display (identity) + Inter (body/UI) + JetBrains Mono (data)
+*/
+
+:root {
+  --bg:         #f8f9fb;
+  --surface:    #ffffff;
+  --border:     #e2e6ed;
+  --fg:         #1a2130;
+  --fg-2:       #4a5568;
+  --fg-3:       #8896a8;
+  --teal:       #1a7a6e;
+  --teal-light: #e8f5f3;
+  --teal-mid:   #b2d8d3;
+  --amber:      #b45309;
+  --amber-bg:   #fef3c7;
+  --red:        #b91c1c;
+  --red-bg:     #fee2e2;
+  --green:      #166534;
+  --green-bg:   #dcfce7;
+  --hero-bg:    #0f1e2e;
+  --hero-fg:    #e8eff8;
+  --hero-dim:   #8aa0b8;
+  --mono:       'JetBrains Mono', 'Courier New', monospace;
+  --serif:      'DM Serif Display', Georgia, serif;
+  --sans:       'Inter', system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:         #111827;
+    --surface:    #1f2937;
+    --border:     #374151;
+    --fg:         #f1f5f9;
+    --fg-2:       #94a3b8;
+    --fg-3:       #64748b;
+    --teal:       #2dd4bf;
+    --teal-light: #0d2e2a;
+    --teal-mid:   #1a4a44;
+    --amber:      #fbbf24;
+    --amber-bg:   #2a1f00;
+    --red:        #f87171;
+    --red-bg:     #2d0a0a;
+    --green:      #4ade80;
+    --green-bg:   #052e0a;
+    --hero-bg:    #070e17;
+    --hero-fg:    #e8eff8;
+    --hero-dim:   #5a7494;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:         #111827;
+  --surface:    #1f2937;
+  --border:     #374151;
+  --fg:         #f1f5f9;
+  --fg-2:       #94a3b8;
+  --fg-3:       #64748b;
+  --teal:       #2dd4bf;
+  --teal-light: #0d2e2a;
+  --teal-mid:   #1a4a44;
+  --amber:      #fbbf24;
+  --amber-bg:   #2a1f00;
+  --red:        #f87171;
+  --red-bg:     #2d0a0a;
+  --green:      #4ade80;
+  --green-bg:   #052e0a;
+  --hero-bg:    #070e17;
+  --hero-fg:    #e8eff8;
+  --hero-dim:   #5a7494;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+
+/* ── HERO ────────────────────────────────────────────── */
+.hero {
+  background: var(--hero-bg);
+  margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+  padding: 64px max(32px, env(safe-area-inset-left, 0px)) 56px;
+}
+
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin: 0 0 20px;
+}
+
+.hero-name {
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 400;
+  color: var(--hero-fg);
+  margin: 0 0 6px;
+  text-wrap: balance;
+  line-height: 1.1;
+}
+
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-style: italic;
+  color: var(--hero-dim);
+  margin: 0 0 32px;
+}
+
+.hero-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--teal);
+  margin: 0 0 32px;
+}
+
+.hero-summary {
+  max-width: 560px;
+  color: var(--hero-dim);
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0 0 40px;
+}
+
+.workpapers-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(26,122,110,0.5);
+  color: var(--teal);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  padding: 8px 18px;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-bottom: 28px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.workpapers-btn:hover {
+  background: rgba(26,122,110,0.15);
+  border-color: var(--teal);
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hero-tag {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--hero-dim);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 5px 12px;
+  border-radius: 3px;
+}
+
+/* ── SECTION TITLE ───────────────────────────────────── */
+.section-header {
+  max-width: 860px;
+  margin: 52px auto 32px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+
+.section-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── PROJECTS GRID ───────────────────────────────────── */
+.projects {
+  max-width: 860px;
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+}
+
+/* ── PROJECT CARD ────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card-header {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+
+.card-stripe {
+  width: 4px;
+  flex-shrink: 0;
+  background: var(--teal);
+}
+
+.card-stripe.critical { background: var(--red); }
+.card-stripe.high     { background: var(--amber); }
+
+.card-header-inner {
+  flex: 1;
+  padding: 20px 24px 18px;
+  min-width: 0;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.card-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--fg-3);
+  letter-spacing: 0.08em;
+}
+
+.card-domain {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--teal-light);
+  color: var(--teal);
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+
+.card-title {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--fg);
+  margin: 0 0 6px;
+  text-wrap: balance;
+  line-height: 1.3;
+}
+
+.card-client {
+  font-size: 13px;
+  color: var(--fg-3);
+  font-family: var(--mono);
+  font-weight: 400;
+}
+
+.card-toggle {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.toggle-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, background 0.2s;
+  background: transparent;
+  color: var(--fg-3);
+}
+
+.card.open .toggle-icon {
+  transform: rotate(180deg);
+  background: var(--teal-light);
+  color: var(--teal);
+  border-color: var(--teal-mid);
+}
+
+/* ── STATS ROW ───────────────────────────────────────── */
+.card-stats {
+  display: flex;
+  gap: 0;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.stat {
+  flex: 1;
+  min-width: 90px;
+  padding: 12px 18px;
+  border-right: 1px solid var(--border);
+}
+.stat:last-child { border-right: none; }
+
+.stat-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-family: var(--mono);
+  font-size: 18px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg);
+  line-height: 1.2;
+}
+
+.stat-value.fail  { color: var(--red); }
+.stat-value.warn  { color: var(--amber); }
+.stat-value.pass  { color: var(--green); }
+
+/* ── DEVIATION BAR ───────────────────────────────────── */
+.dev-bar-wrap {
+  padding: 0 18px 12px;
+  border-right: 1px solid var(--border);
+}
+.dev-bar-track {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+.dev-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--red);
+  transition: width 0.5s ease;
+}
+.dev-bar-fill.warn { background: var(--amber); }
+
+/* ── DETAIL BODY ─────────────────────────────────────── */
+.card-body {
+  display: none;
+  border-top: 1px solid var(--border);
+  padding: 24px 28px;
+  gap: 24px;
+  flex-direction: column;
+}
+
+.card.open .card-body { display: flex; }
+
+.detail-section { display: flex; flex-direction: column; gap: 10px; }
+
+.detail-heading {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.detail-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--fg-2);
+  max-width: 70ch;
+}
+
+.finding-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.finding-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13.5px;
+  color: var(--fg-2);
+  line-height: 1.55;
+}
+
+.finding-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--red);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+.finding-dot.amber { background: var(--amber); }
+.finding-dot.teal  { background: var(--teal); }
+
+.conclusion-box {
+  background: var(--red-bg);
+  border: 1px solid var(--red);
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 13.5px;
+  color: var(--red);
+  line-height: 1.55;
+}
+
+.conclusion-box.warn {
+  background: var(--amber-bg);
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.conclusion-box strong {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.framework-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  background: var(--teal-light);
+  color: var(--teal);
+  border: 1px solid var(--teal-mid);
+  padding: 4px 10px;
+  border-radius: 3px;
+}
+
+/* ── EXCEPTION TABLE ─────────────────────────────────── */
+.exc-table-wrap {
+  overflow-x: auto;
+}
+
+.exc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.exc-table th {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  text-align: left;
+  padding: 6px 12px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.exc-table td {
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--fg-2);
+  vertical-align: top;
+}
+
+.exc-table tr:last-child td { border-bottom: none; }
+
+.exc-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 2px;
+}
+
+.exc-tag.exception { background: var(--red-bg); color: var(--red); }
+.exc-tag.ok { background: var(--green-bg); color: var(--green); }
+
+/* ── SKILLS SUMMARY BAR ──────────────────────────────── */
+.skills-section {
+  max-width: 860px;
+  margin: 48px auto 0;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 0;
+}
+
+.skill-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px 20px;
+}
+
+.skill-icon {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.skill-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fg);
+  margin-bottom: 4px;
+}
+
+.skill-desc {
+  font-size: 12px;
+  color: var(--fg-3);
+  line-height: 1.5;
+}
+
+/* ── FOOTER ──────────────────────────────────────────── */
+.footer {
+  max-width: 860px;
+  margin: 48px auto 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-name {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--fg);
+}
+
+.footer-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--fg-3);
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 500px) {
+  .hero { padding: 48px 20px 40px; }
+  .card-header-inner { padding: 16px 16px 14px; }
+  .card-body { padding: 18px 16px; }
+  .stat { padding: 10px 12px; }
+  .card-stats { flex-wrap: nowrap; overflow-x: auto; }
+  .section-header { margin: 36px auto 24px; }
+}
+</style>
+
+<!-- ════════════ HERO ════════════ -->
+<header class="hero">
+  <p class="hero-eyebrow">IT Audit Portfolio &nbsp;·&nbsp; TechBridge Solutions</p>
+  <h1 class="hero-name">Roussel Mbodo</h1>
+  <p class="hero-title">IT Audit Associate</p>
+  <div class="hero-divider"></div>
+  <a href="https://drive.google.com/drive/folders/1WkVhE4HUMc1kDLBFj3Wvc_7XBa53_feB?usp=drive_link" target="_blank" class="workpapers-btn" title="View Excel workpapers on Google Drive">📁 View Workpapers</a>
+  <p class="hero-summary">
+    Five structured IT audit workpapers completed on behalf of TechBridge Solutions for MedCore Health Systems, a mid-size healthcare organization subject to HIPAA requirements. Each engagement tests a key IT General Control area using industry-standard methodology: evidence collection, deviation rate analysis, and formal workpaper documentation.
+  </p>
+  <div class="hero-tags">
+    <span class="hero-tag">ITGC Testing</span>
+    <span class="hero-tag">Healthcare / HIPAA</span>
+    <span class="hero-tag">Access Control</span>
+    <span class="hero-tag">Change Management</span>
+    <span class="hero-tag">SDLC</span>
+    <span class="hero-tag">Backup Controls</span>
+    <span class="hero-tag">Access Recertification</span>
+  </div>
+</header>
+
+<!-- ════════════ PROJECTS ════════════ -->
+<div class="section-header">
+  <span class="section-label">Portfolio Projects</span>
+  <div class="section-rule"></div>
+</div>
+
+<div class="projects">
+
+  <!-- PROJECT 1: ACCESS CONTROL -->
+  <article class="card" id="p1" onclick="toggle('p1')">
+    <div class="card-header">
+      <div class="card-stripe critical"></div>
+      <div class="card-header-inner">
+        <div class="card-meta">
+          <span class="card-num">01</span>
+          <span class="card-domain">Access Control</span>
+        </div>
+        <h2 class="card-title">User Termination Access Control Testing</h2>
+        <p class="card-client">MedCore Health Systems · Q3 2025</p>
+      </div>
+      <div class="card-toggle">
+        <div class="toggle-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-stats">
+      <div class="stat">
+        <div class="stat-label">Population</div>
+        <div class="stat-value">12</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Exceptions</div>
+        <div class="stat-value fail">8</div>
+      </div>
+      <div class="stat" style="flex:2; min-width:140px;">
+        <div class="stat-label">Deviation Rate</div>
+        <div class="stat-value fail">66.67%</div>
+        <div class="dev-bar-track" style="margin-top:6px;">
+          <div class="dev-bar-fill" style="width:66.67%"></div>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Conclusion</div>
+        <div class="stat-value fail" style="font-size:13px; margin-top:2px;">FAILS</div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="detail-section">
+        <div class="detail-heading">Objective &amp; Methodology</div>
+        <p class="detail-text">
+          Tested whether system access was properly revoked for all employees terminated during Q3 2025. Obtained the HR termination roster (12 records) and compared it against the Active Directory export using VLOOKUP on Employee ID. Any terminated employee with an ACTIVE status in the system was flagged as an exception.
+        </p>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-heading">Key Findings</div>
+        <ul class="finding-list">
+          <li class="finding-item"><div class="finding-dot"></div>8 of 12 terminated employees still had active system access at testing date</li>
+          <li class="finding-item"><div class="finding-dot"></div>Exceptions span all departments: Finance (3), Nursing (3), Radiology (2), IT (2)</li>
+          <li class="finding-item"><div class="finding-dot"></div>Only 4 employees had access properly revoked (Grace Achebe, Fatima Hassan, Marcus Boateng, Kofi Mensah)</li>
+          <li class="finding-item"><div class="finding-dot amber"></div>Finance department had the highest concentration of unrevoked access — 3 of 3 Finance terminees still active</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-heading">Sample — Exception Records</div>
+        <div class="exc-table-wrap">
+          <table class="exc-table">
+            <thead>
+              <tr>
+                <th>Employee</th>
+                <th>Dept</th>
+                <th>Terminated</th>
+                <th>Access Status</th>
+                <th>Exception?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Amara Diallo</td><td>Nursing</td><td>Jul 3</td><td>ACTIVE</td><td><span class="exc-tag exception">EXCEPTION</span></td></tr>
+              <tr><td>Thomas Reid</td><td>Finance</td><td>Jul 11</td><td>ACTIVE</td><td><span class="exc-tag exception">EXCEPTION</span></td></tr>
+              <tr><td>Grace Achebe</td><td>IT</td><td>Jul 22</td><td>REVOKED</td><td><span class="exc-tag ok">PASS</span></td></tr>
+              <tr><td>Samuel Park</td><td>Radiology</td><td>Aug 4</td><td>ACTIVE</td><td><span class="exc-tag exception">EXCEPTION</span></td></tr>
+              <tr><td>Chris Obi</td><td>Finance</td><td>Aug 20</td><td>ACTIVE</td><td><span class="exc-tag exception">EXCEPTION</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="conclusion-box">
+        <strong>Control Conclusion: FAILS</strong>
+        66.67% deviation rate far exceeds the 5% tolerable threshold. The access termination process is not operating effectively. Inactive accounts present unauthorized access risk to patient records and financial systems — a direct HIPAA compliance exposure.
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-heading">Frameworks &amp; Standards</div>
+        <div class="framework-pills">
+          <span class="pill">COBIT APO09</span>
+          <span class="pill">NIST CSF PR.AC-1</span>
+          <span class="pill">HIPAA 164.312(a)</span>
+          <span class="pill">ISO 27001 A.9.2</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- PROJECT 2: CHANGE MANAGEMENT -->
+  <article class="card" id="p2" onclick="toggle('p2')">
+    <div class="card-header">
+      <div class="card-stripe critical"></div>
+      <div class="card-header-inner">
+        <div class="card-meta">
+          <span class="card-num">02</span>
+          <span class="card-domain">Change Management</span>
+        </div>
+        <h2 class="card-title">Change Management Control Testing</h2>
+        <p class="card-client">MedCore Health Systems · Q3 2025</p>
+      </div>
+      <div class="card-toggle">
+        <div class="toggle-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-stats">
+      <div class="stat">
+        <div class="stat-label">Changes Tested</div>
+        <div class="stat-value">12</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Exceptions</div>
+        <div class="stat-value fail">7</div>
+      </div>
+      <div class="stat" style="flex:2; min-width:140px;">
+        <div class="stat-label">Deviation Rate</div>
+        <div class="stat-value fail">58.33%</div>
+        <div class="dev-bar-track" style="margin-top:6px;">
+          <div class="dev-bar-fill" style="width:58.33%"></div>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Conclusion</div>
+        <div class="stat-value fail" style="font-size:13px; margin-top:2px;">FAILS</div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="detail-section">
+        <div class="detail-heading">Objective &amp; Methodology</div>
+        <p class="detail-text">
+          Tested 12 system changes deployed during Q3 2025 across MedCore's clinical and administrative platforms. For each change, verified two independent requirements: (1) formal approval was obtained before deployment, and (2) post-deployment testing was completed. A change was flagged as an exception if either condition was missing — using an OR logic flag so partial compliance is still caught.
+        </p>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-heading">Key Findings</div>
+        <ul class="finding-list">
+          <li class="finding-item"><div class="finding-dot"></div>4 changes deployed without proper approval (CHG-303, CHG-305, CHG-308, CHG-311)</li>
+          <li class="finding-item"><div class="finding-dot"></div>5 changes deployed without post-deployment testing (CHG-302, CHG-306, CHG-308, CHG-310, CHG-311)</li>
+          <li class="finding-item"><div class="finding-dot amber"></div>CHG-308 (Billing System) and CHG-302 (Billing System) are the highest-risk findings — Billing handles patient financial data</li>
+          <li class="finding-item"><div class="finding-dot teal"></div>5 changes passed all requirements with no exceptions (CHG-301, CHG-304, CHG-307, CHG-309, CHG-312)</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-heading">Sample — Exception Records</div>
+        <div class="exc-table-wrap">
+          <table class="exc-table">
+            <thead>
+              <tr>
+                <th>Change ID</th>
+                <th>System</th>
+                <th>Approved?</th>
+                <th>Tested?</th>
+                <th>Exception?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>CHG-302</td><td>Billing System</td><td>YES</td><td>NO</td><td><span class="exc-tag exception">EXCEPTION</span></td></tr>
+              <tr><td>CHG-303</td><td>Network Firewall</td><td>NO</td><td>NO</td><td><span class="exc-tag exception">EXCEPTION</span></td></tr>
+              <tr><td>CHG-305</td><td>Email Server</td><td>NO</td><td>YES</td><td><span class="exc-tag exception">EXCEPTION</span></td></tr>
+              <tr><td>CHG-308</td><td>Billing System</td><td>NO</td><td>NO</td><td><span class="exc-tag exception">EXCEPTION</span></td></tr>
+              <tr><td>CHG-307</td><td>Patient Records</td><td>YES</td><td>YES</td><td><span class="exc-tag ok">PASS</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="conclusion-box">
+        <strong>Control Conclusion: FAILS</strong>
+        7 of 12 changes contained exceptions — either no approval, no testing, or both. The 58.33% deviation rate indicates a systemic breakdown in the change management process, not isolated incidents. Changes to the Billing System without approval or testing pose direct risk of unauthorized modification to financial records.
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-heading">Frameworks &amp; Standards</div>
+        <div class="framework-pills">
+          <span class="pill">COBIT BAI06</span>
+          <span class="pill">COSO Control Activities</span>
+          <span class="pill">ITIL Change Mgmt</span>
+          <span class="pill">SOX ITGC</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- PROJECT 3: IT OPERATIONS (BACKUP) -->
+  <article class="card" id="p3" onclick="toggle('p3')">
+    <div class="card-header">
+      <div class="card-stripe high"></div>
+      <div class="card-header-inner">
+        <div class="card-meta">
+          <span class="card-num">03</span>
+          <span class="card-domain">IT Operations</span>
+        </div>
+        <h2 class="card-title">Backup Controls &amp; IT Operations Testing</h2>
+        <p class="card-client">MedCore Health Systems · Q3 2025</p>
+      </div>
+      <div class="card-toggle">
+        <div class="toggle-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-stats">
+      <div class="stat">
+        <div class="stat-label">Servers Tested</div>
+        <div class="stat-value">12</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Unresolved Fails</div>
+        <div class="stat-value fail">4</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Worst Failure Rate</div>
+        <div class="stat-value warn">13.04%</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Conclusion</div>
+        <div class="stat-value fail" style="font-size:13px; margin-top:2px;">FAILS</div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="detail-section">
+        <div class="detail-heading">Objective &amp; Methodology</div>
+        <p class="detail-text">
+          Reviewed backup job logs for all 12 servers across MedCore's clinical and infrastructure environment over Q3 2025 (92 job cycles per server). For each server, calculated the failure rate and verified whether all failures were investigated and resolved. A server was flagged if it had backup failures that were not investigated — regardless of failure rate — since any unresolved failure creates data recovery risk.
+        </p>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-heading">Key Findings</div>
+        <ul class="finding-list">
+          <li class="finding-item"><div class="finding-dot"></div>SRV-BCK-01 (Backup Controller): 12 failures, 13.04% failure rate — not investigated. Highest risk as this is the backup infrastructure itself.</li>
+          <li class="finding-item"><div class="finding-dot"></div>SRV-BIL-01 (Billing): 7 failures at 7.61% — not investigated. Billing data recovery is at risk.</li>
+          <li class="finding-item"><div class="finding-dot"></div>SRV-PHR-02 (Pharmacy): 5 failures at 5.43% — not investigated. Last successful backup: Sep 25 (5 days before quarter end).</li>
+          <li class="finding-item"><div class="finding-dot"></div>SRV-RAD-02 (Radiology): 4 failures at 4.35% — not investigated.</li>
+          <li class="finding-item"><div class="finding-dot teal"></div>4 servers had zero failures; 4 servers with failures properly investigated — no exception.</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-heading">Server Exception Summary</div>
+        <div class="exc-table-wrap">
+          <table class="exc-table">
+            <thead>
+              <tr>
+                <th>Server</th>
+                <th>System Type</th>
+                <th>Failure Rate</th>
+                <th>Investigated?</th>
+                <th>Exception?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>SRV-BCK-01</td><td>Backup Controller</td><td>13.04%</td><td>NO</td><td><span class="exc-tag exception">EXCEPTION</span></td></tr>
+              <tr><td>SRV-BIL-01</td><td>Billing</td><td>7.61%</td><td>NO</td><td><span class="exc-tag exception">EXCEPTION</span></td></tr>
+              <tr><td>SRV-PHR-02</td><td>Pharmacy</td><td>5.43%</td><td>NO</td><td><span class="exc-tag exception">EXCEPTION</span></td></tr>
+              <tr><td>SRV-RAD-02</td><td>Radiology</td><td>4.35%</td><td>NO</td><td><span class="exc-tag exception">EXCEPTION</span></td></tr>
+              <tr><td>SRV-PAT-01</td><td>Patient Records</td><td>4.35%</td><td>YES</td><td><span class="exc-tag ok">PASS</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="conclusion-box warn">
+        <strong>Control Conclusion: FAILS</strong>
+        4 of 12 servers had backup failures with no investigation. The Backup Controller itself (SRV-BCK-01) failing at 13% without investigation is the most critical finding — it represents a systemic risk to MedCore's entire data recovery capability. HIPAA requires organizations to be able to restore PHI after a disaster; unresolved backup failures undermine that obligation.
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-heading">Frameworks &amp; Standards</div>
+        <div class="framework-pills">
+          <span class="pill">NIST CSF RC.RP-1</span>
+          <span class="pill">ISO 27001 A.12.3</span>
+          <span class="pill">HIPAA 164.308(a)(7)</span>
+          <span class="pill">COBIT DSS04</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- PROJECT 4: SDLC TESTING -->
+  <article class="card" id="p4" onclick="toggle('p4')">
+    <div class="card-header">
+      <div class="card-stripe critical"></div>
+      <div class="card-header-inner">
+        <div class="card-meta">
+          <span class="card-num">04</span>
+          <span class="card-domain">SDLC</span>
+        </div>
+        <h2 class="card-title">System Development Life Cycle (SDLC) Testing</h2>
+        <p class="card-client">MedCore Health Systems · Q3 2025</p>
+      </div>
+      <div class="card-toggle">
+        <div class="toggle-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-stats">
+      <div class="stat">
+        <div class="stat-label">Deployments</div>
+        <div class="stat-value">8</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Exceptions</div>
+        <div class="stat-value fail">5</div>
+      </div>
+      <div class="stat" style="flex:2; min-width:140px;">
+        <div class="stat-label">Deviation Rate</div>
+        <div class="stat-value fail">62.5%</div>
+        <div class="dev-bar-track" style="margin-top:6px;">
+          <div class="dev-bar-fill" style="width:62.5%"></div>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">PHI Exposed</div>
+        <div class="stat-value fail" style="font-size:13px; margin-top:2px;">5 of 5</div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="detail-section">
+        <div class="detail-heading">Objective &amp; Methodology</div>
+        <p class="detail-text">
+          Tested all 8 system deployments (3 new systems + 5 major upgrades) completed in Q3 2025 against MedCore IT Policy IT-POL-012. The policy requires every deployment to complete unit testing, user acceptance testing (UAT), security review, business owner approval, and IT security approval before go-live. Tested 100% of the population. Given the healthcare context and patient data exposure, the tolerable deviation rate was set at 0% — any gap is an exception.
+        </p>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-heading">Key Findings</div>
+        <ul class="finding-list">
+          <li class="finding-item"><div class="finding-dot"></div>5 of 8 deployments had exceptions — all 5 involved systems that process Protected Health Information (PHI)</li>
+          <li class="finding-item"><div class="finding-dot"></div>Billing System Upgrade &amp; Radiology PACS: both testing and approval were incomplete before go-live</li>
+          <li class="finding-item"><div class="finding-dot"></div>Pharmacy Management v3 &amp; Lab Results System: deployed without completing UAT</li>
+          <li class="finding-item"><div class="finding-dot amber"></div>EHR System Upgrade: all testing passed but deployed without business or IT security approval</li>
+          <li class="finding-item"><div class="finding-dot teal"></div>Non-PHI systems (HR Self-Service, Backup Software Upgrade) had no exceptions</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-heading">Deployment Exception Log</div>
+        <div class="exc-table-wrap">
+          <table class="exc-table">
+            <thead>
+              <tr>
+                <th>System</th>
+                <th>PHI?</th>
+                <th>Testing</th>
+                <th>Approval</th>
+                <th>Exception?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Billing System Upgrade</td><td>YES</td><td>Incomplete</td><td>Incomplete</td><td><span class="exc-tag exception">EXCEPTION</span></td></tr>
+              <tr><td>Pharmacy Mgmt v3</td><td>YES</td><td>Incomplete</td><td>Complete</td><td><span class="exc-tag exception">EXCEPTION</span></td></tr>
+              <tr><td>Radiology PACS Upgrade</td><td>YES</td><td>Incomplete</td><td>Incomplete</td><td><span class="exc-tag exception">EXCEPTION</span></td></tr>
+              <tr><td>EHR System Upgrade</td><td>YES</td><td>Complete</td><td>Incomplete</td><td><span class="exc-tag exception">EXCEPTION</span></td></tr>
+              <tr><td>Lab Results System</td><td>YES</td><td>Incomplete</td><td>Complete</td><td><span class="exc-tag exception">EXCEPTION</span></td></tr>
+              <tr><td>Patient Portal v2.0</td><td>YES</td><td>Complete</td><td>Complete</td><td><span class="exc-tag ok">PASS</span></td></tr>
+              <tr><td>HR Self-Service Portal</td><td>NO</td><td>Complete</td><td>Complete</td><td><span class="exc-tag ok">PASS</span></td></tr>
+              <tr><td>Backup Software Upgrade</td><td>NO</td><td>Complete</td><td>Complete</td><td><span class="exc-tag ok">PASS</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="conclusion-box">
+        <strong>Control Conclusion: FAILS — HIPAA Exposure</strong>
+        5 of 8 deployments failed SDLC controls, and every exception involved a PHI-handling system. HIPAA requires security review before systems processing patient data go live. Deploying PHI systems without completed testing or required approvals creates direct regulatory exposure and potential for undetected security vulnerabilities in clinical systems.
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-heading">Frameworks &amp; Standards</div>
+        <div class="framework-pills">
+          <span class="pill">COBIT BAI03</span>
+          <span class="pill">NIST SSDF</span>
+          <span class="pill">HIPAA 164.312(a)(1)</span>
+          <span class="pill">IT-POL-012</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- PROJECT 5: USER ACCESS RECERTIFICATION -->
+  <article class="card" id="p5" onclick="toggle('p5')">
+    <div class="card-header">
+      <div class="card-stripe critical"></div>
+      <div class="card-header-inner">
+        <div class="card-meta">
+          <span class="card-num">05</span>
+          <span class="card-domain">Access Recertification</span>
+        </div>
+        <h2 class="card-title">Quarterly User Access Recertification Testing</h2>
+        <p class="card-client">MedCore Health Systems · Q3 2026</p>
+      </div>
+      <div class="card-toggle">
+        <div class="toggle-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-stats">
+      <div class="stat">
+        <div class="stat-label">Users Tested</div>
+        <div class="stat-value">15</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Exceptions</div>
+        <div class="stat-value fail">7</div>
+      </div>
+      <div class="stat" style="flex:2; min-width:140px;">
+        <div class="stat-label">Deviation Rate</div>
+        <div class="stat-value fail">46.7%</div>
+        <div class="dev-bar-track" style="margin-top:6px;">
+          <div class="dev-bar-fill" style="width:46.7%"></div>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Conclusion</div>
+        <div class="stat-value fail" style="font-size:13px; margin-top:2px;">FAILS</div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="detail-section">
+        <div class="detail-heading">Objective &amp; Methodology</div>
+        <p class="detail-text">
+          Tested MedCore's quarterly access recertification process per IT Policy IT-POL-008 and HIPAA requirements. Managers are required to review and certify access for all users each quarter, and any required access changes must be submitted within 5 business days. Tested all 15 active clinical and administrative staff for Q3 2026. Exceptions were flagged for two failure types: review not completed (access never certified) and access change required but never submitted.
+        </p>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-heading">Key Findings</div>
+        <ul class="finding-list">
+          <li class="finding-item"><div class="finding-dot"></div>4 users had access never reviewed or certified this quarter: Samuel Park (Radiology), Elena Vasquez (Nursing), Ingrid Larsen (Radiology), Lydia Osei (IT)</li>
+          <li class="finding-item"><div class="finding-dot"></div>3 users had required access changes that were never submitted: Fatima Hassan (Pharmacy), Diana Owusu (Nursing), Chloe Asante (Pharmacy)</li>
+          <li class="finding-item"><div class="finding-dot amber"></div>Radiology and Nursing had the most exceptions — departments with direct PHI access</li>
+          <li class="finding-item"><div class="finding-dot teal"></div>8 users had no exceptions — reviews completed and any required changes properly submitted</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-heading">Exception Breakdown by Department</div>
+        <div class="exc-table-wrap">
+          <table class="exc-table">
+            <thead>
+              <tr>
+                <th>Employee</th>
+                <th>Dept</th>
+                <th>Review Done?</th>
+                <th>Change Submitted?</th>
+                <th>Exception Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Samuel Park</td><td>Radiology</td><td>NO</td><td>N/A</td><td><span class="exc-tag exception">Not Reviewed</span></td></tr>
+              <tr><td>Fatima Hassan</td><td>Pharmacy</td><td>YES</td><td>NO</td><td><span class="exc-tag exception">Change Not Submitted</span></td></tr>
+              <tr><td>Elena Vasquez</td><td>Nursing</td><td>NO</td><td>N/A</td><td><span class="exc-tag exception">Not Reviewed</span></td></tr>
+              <tr><td>Ingrid Larsen</td><td>Radiology</td><td>NO</td><td>N/A</td><td><span class="exc-tag exception">Not Reviewed</span></td></tr>
+              <tr><td>Diana Owusu</td><td>Nursing</td><td>YES</td><td>NO</td><td><span class="exc-tag exception">Change Not Submitted</span></td></tr>
+              <tr><td>Lydia Osei</td><td>IT</td><td>NO</td><td>N/A</td><td><span class="exc-tag exception">Not Reviewed</span></td></tr>
+              <tr><td>Thomas Reid</td><td>Finance</td><td>YES</td><td>YES</td><td><span class="exc-tag ok">PASS</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="conclusion-box">
+        <strong>Control Conclusion: FAILS</strong>
+        7 of 15 users (46.7%) had recertification failures. Four users had access that was never reviewed — meaning those users may still have inappropriate access rights going undetected. Three users had required changes identified but never acted on. Under HIPAA, access to PHI must be reviewed and certified regularly; this failure represents direct compliance exposure.
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-heading">Frameworks &amp; Standards</div>
+        <div class="framework-pills">
+          <span class="pill">NIST CSF PR.AC-1</span>
+          <span class="pill">HIPAA 164.308(a)(3)</span>
+          <span class="pill">IT-POL-008</span>
+          <span class="pill">ISO 27001 A.9.5</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div>
+
+<!-- ════════════ SKILLS SUMMARY ════════════ -->
+<div class="section-header" style="margin-top:56px;">
+  <span class="section-label">Skills Demonstrated</span>
+  <div class="section-rule"></div>
+</div>
+
+<div class="skills-section">
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">📋</div>
+      <div class="skill-name">Workpaper Documentation</div>
+      <div class="skill-desc">Formal structured workpapers with control objectives, population, methodology, and conclusions</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📊</div>
+      <div class="skill-name">Deviation Rate Analysis</div>
+      <div class="skill-desc">Calculated actual vs. tolerable deviation rates across all 5 control areas using Excel formulas</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🔍</div>
+      <div class="skill-name">Evidence-Based Testing</div>
+      <div class="skill-desc">HR rosters, system logs, deployment records — cross-referenced with VLOOKUP and manual review</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🏥</div>
+      <div class="skill-name">Healthcare Compliance</div>
+      <div class="skill-desc">Applied HIPAA requirements throughout — PHI exposure, patient data system controls, access policies</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">⚠️</div>
+      <div class="skill-name">Risk &amp; Finding Assessment</div>
+      <div class="skill-desc">Identified and escalated high-risk findings — control failures in PHI systems flagged for priority remediation</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🗂️</div>
+      <div class="skill-name">Population &amp; Sampling</div>
+      <div class="skill-desc">100% population testing applied to all five engagements, appropriate for small-population ITGC audits</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ FOOTER ════════════ -->
+<footer class="footer">
+  <span class="footer-name">Roussel Mbodo</span>
+  <span class="footer-meta">MedCore Health Systems · Q3 2025–2026 · 5 Engagements</span>
+</footer>
+
+<script>
+  function toggle(id) {
+    const card = document.getElementById(id);
+    card.classList.toggle('open');
+  }
+</script>
